@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NewPost from './pages/NewPost';
+import PostPage from './pages/PostPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" component={HomePage} exact />
           <Route path="/about" component={AboutPage} />
           <Route path="/newpost" component={NewPost} />
+          <Route path="/posts/:postId" component={PostPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

@@ -1,13 +1,9 @@
-import React from "react";
+import React from 'react';
+import PostList from '../components/PostList';
 
 const HomePage = () => (
   <div className="page-body">
-    <h2>Home page</h2>
-    <ul>
-      <li>Post 1</li>
-      <li>Post 2</li>
-      <li>Post 3</li>
-    </ul>
+    <PostList />
   </div>
 );
 
