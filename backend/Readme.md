@@ -8,7 +8,7 @@
 
 #### Babel (for ES6 bindings for Express)
 
-3. create `.babelrc` in root dir with:
+Create `.babelrc` in root dir:
 
 ```
   {
@@ -20,7 +20,7 @@
 
 `npm install --save-dev nodemon`
 
-add to `package.json`:
+Add start script for Nodemon to `package.json`:
 
 ```
    "scripts": {
