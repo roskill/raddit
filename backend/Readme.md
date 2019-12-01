@@ -4,9 +4,9 @@
 
 `npm install --save express`
 
-`npm install --save-dev @babel/core @babel/node @babel/preset-env`
-
 #### Babel (for ES6 bindings for Express)
+
+`npm install --save-dev @babel/core @babel/node @babel/preset-env`
 
 Create `.babelrc` in root dir:
 
