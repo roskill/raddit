@@ -6,8 +6,8 @@ const PostList = () => {
   return (
     <>
       {posts.map((post, key) => (
-        <div className="post-list-item">
-          <Link key={key} to={`/posts/${post.postId}`}>
+        <div className="post-list-item" key={key}>
+          <Link to={`/posts/${post.postId}`}>
             <h5>{post.postTitle.substring(0, 24)}...</h5>
           </Link>
         </div>
