@@ -27,3 +27,31 @@ Add start script for Nodemon to `package.json`:
    "start": "nodemon --exec babel-node src/server.js",
    },
 ```
+
+#### MongoDB
+
+`brew install mongodb`
+
+`sudo mkdir -p /data/db`
+
+` sudo chown -R ``id -un`` /data/db `
+
+#### Create MongoDB database
+
+`use raddit`
+
+```
+db.posts.insert([{
+  ... postId: '1',
+  ... upvotes: 0,
+  ... comments: [],
+  ... }])
+```
+
+`db.posts.find({}) // see all documents in posts collection`
+
+`db.posts.find({}).pretty() // prettify output`
+
+`db.posts.find({ postId: '1' }).pretty()`
+
+`db.posts.findOne({ postId: '1' })`
