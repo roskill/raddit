@@ -1,14 +1,23 @@
 import express from "express";
+import { MongoClient } from "mongodb";
 
 const app = express();
 
 app.use(express.json());
 
-app.get("/hello", (req, res) => res.send("Hello"));
-app.get("/hello/:name", (req, res) => res.send(`Hello ${req.params.name}`));
-app.post("/hello", (req, res) => res.send(`Hello ${req.body.name}`));
-app.get("/posts/:postId", (req, res) =>
-  res.send(`Fetching post ${req.params.postId}`)
-);
+app.get("/api/posts/:postId", async (req, res) => {
+  try {
+    const postId = req.params.postId;
+    const client = await MongoClient.connect("mongodb://localhost:27017", {
+      useNewUrlParser: true
+    });
+    const db = client.db("raddit");
+    const postInfo = await db.collection("posts").findOne({ postId: postId });
+    res.status(200).json(postInfo);
+    client.close();
+  } catch (error) {
+    res.status(500).json({ message: "Error connecting to db", error });
+  }
+});
 
 app.listen(8000, () => console.log("Listening on port 8000"));

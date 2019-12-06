@@ -55,3 +55,7 @@ db.posts.insert([{
 `db.posts.find({ postId: '1' }).pretty()`
 
 `db.posts.findOne({ postId: '1' })`
+
+### Connect MongoDB to Express
+
+`npm install --save mongodb`
