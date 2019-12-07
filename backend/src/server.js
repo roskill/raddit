@@ -5,19 +5,25 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/api/posts/:postId', async (req, res) => {
+const withDB = async (operations, res) => {
   try {
-    const postId = req.params.postId;
     const client = await MongoClient.connect('mongodb://localhost:27017', {
       useNewUrlParser: true,
     });
     const db = client.db('raddit');
-    const post = await db.collection('posts').findOne({ postId: postId });
-    res.status(200).json(post);
+    await operations(db);
     client.close();
   } catch (error) {
     res.status(500).json({ message: 'Error connecting to db', error });
   }
+};
+
+app.get('/api/posts/:postId', async (req, res) => {
+  withDB(async db => {
+    const postId = req.params.postId;
+    const post = await db.collection('posts').findOne({ postId: postId });
+    res.status(200).json(post);
+  }, res);
 });
 
 app.post('/api/posts/:postId/upvote', async (req, res) => {
