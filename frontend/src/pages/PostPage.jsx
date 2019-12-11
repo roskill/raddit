@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import posts from './posts';
+import UpvoteSection from '../components/UpvoteSection';
 import NotFoundPage from './NotFoundPage';
 
 const PostPage = ({ match }) => {
@@ -20,7 +21,7 @@ const PostPage = ({ match }) => {
   return (
     <div className="post-content">
       <h2>{post.postTitle}</h2>
-      <p>Upvotes: {postInfo.upvotes}</p>
+      <UpvoteSection postId={postId} upvotes={postInfo.upvotes} setPostInfo={setPostInfo} />
       {post.postContent.map((paragraph, key) => (
         <p key={key}>{paragraph}</p>
       ))}
