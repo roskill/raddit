@@ -38,6 +38,8 @@ Add start script for Nodemon to `package.json`:
 
 #### Create MongoDB database
 
+`mongodb`
+`mongo` // start mongo shell
 `use raddit`
 
 ```

@@ -1,8 +1,9 @@
-import uuidv4 from 'uuid/v4';
+// import uuidv4 from 'uuid/v4';
 
 const posts = [
   {
-    postId: uuidv4(),
+    // postId: uuidv4(),
+    postId: '1',
     postTitle: 'The way they make shows',
     postContent: [
       `Well, the way they make shows is, they make one show. That show's called a pilot.`,
@@ -12,7 +13,7 @@ const posts = [
     ],
   },
   {
-    postId: uuidv4(),
+    postId: '2',
     postTitle: 'They called me Mr Glass',
     postContent: [
       `Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense!`,
@@ -22,7 +23,7 @@ const posts = [
     ],
   },
   {
-    postId: uuidv4(),
+    postId: '3',
     postTitle: 'This gun is advertised as the most popular gun in American crime',
     postContent: [
       `Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime.`,
