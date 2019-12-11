@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import posts from './posts';
 import UpvoteSection from '../components/UpvoteSection';
+import CommentSection from '../components/CommentSection';
 import NotFoundPage from './NotFoundPage';
 
 const PostPage = ({ match }) => {
@@ -22,9 +23,14 @@ const PostPage = ({ match }) => {
     <div className="post-content">
       <h2>{post.postTitle}</h2>
       <UpvoteSection postId={postId} upvotes={postInfo.upvotes} setPostInfo={setPostInfo} />
+      <CommentSection postId={postId} setPostInfo={setPostInfo} />
       {post.postContent.map((paragraph, key) => (
         <p key={key}>{paragraph}</p>
       ))}
+      <div>
+        {postInfo.comments &&
+          postInfo.comments.map((comment, key) => <p>{`${comment.username}: ${comment.text}`}</p>)}
+      </div>
     </div>
   );
 };

@@ -62,14 +62,14 @@ app.post('/api/posts/add-post', async (req, res) => {
 
 app.post('/api/posts/:postId/add-comment', async (req, res) => {
   try {
-    const { userName, text } = req.body;
+    const { username, text } = req.body;
     const postId = req.params.postId;
     const client = await MongoClient.connect('mongodb://localhost:27017', {
       useNewUrlParser: true,
     });
     const db = client.db('raddit');
     const post = await db.collection('posts').findOne({ postId: postId });
-    post.comments.push({ userName, text });
+    post.comments.push({ username, text });
     await db.collection('posts').updateOne(
       { postId: postId },
       {
