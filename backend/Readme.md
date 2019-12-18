@@ -61,3 +61,23 @@ db.posts.insert([{
 ### Connect MongoDB to Express
 
 `npm install --save mongodb`
+
+### Release to AWS
+
+1. In frontend, type `npm run build`
+
+2. This creates a `build` directory. Copy and paste this directory into the `src` directory in the backend. This will allow the backend to serve the frontend client of the website.
+
+3. To tell the backend where to serve static files, go to `server.js`, and add: `import path from 'path'`
+
+then add:
+
+`app.use(express.static(path.join(__dirname, '/build')))`
+
+then add:
+
+```
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/index.html'));
+});
+```

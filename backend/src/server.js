@@ -1,9 +1,11 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
+import path from 'path';
 
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('/api/posts/:postId', async (req, res) => {
   try {
@@ -82,6 +84,10 @@ app.post('/api/posts/:postId/add-comment', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Error connecting to db', error });
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 app.listen(8000, () => console.log('Listening on port 8000'));
