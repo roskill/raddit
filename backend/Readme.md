@@ -151,3 +151,21 @@ db.posts.insert([{
   ... comments: [],
   ... }])
 ```
+
+##### Clone from Github
+
+20. Clone repo into instance, run `npm install`, then install Forever to ensure server runs continuously by typing `npm install -g forever`.
+
+21. Then start app by typing `forever start -c "npm start" .`
+
+22. The app should be running on port 8000. Use `forever list` to check.
+
+##### Map Port 80 on EC2 instance to Port 8000 on Node server
+
+23. `sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000`
+
+24. In AWS Console, click on instance and copy Security groups eg, launch-wizard-1.
+
+25. Go to Security Groups > Inbound > Edit > Add Rule.
+
+26. Select HTTP, Source: Anywhere.
